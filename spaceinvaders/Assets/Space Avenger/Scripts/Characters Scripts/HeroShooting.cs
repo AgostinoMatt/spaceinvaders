@@ -14,14 +14,26 @@ public class HeroShooting : MonoBehaviour
     public Transform weapon;
     public float projectileSpeed;
 
+    [SerializeField]
+    private float autofireRate = 0.5f;
+    [SerializeField]
+    private float nextFire = 0.0f;
+
     [Header("Sounds")]
     public AudioClip projectileSound;
     public AudioSource source;
 
     public void Update()
     {
-		if (CnInputManager.GetButtonDown("Fire"))
+		/*if (CnInputManager.GetButtonDown("Fire"))
         {
+            Shoot();
+        }
+        */
+
+        if (Time.time > nextFire)
+        {
+            nextFire = Time.time + autofireRate;
             Shoot();
         }
     }
