@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using CnControls;
 
 // © Glitch Squirrel Design 2017
@@ -20,8 +21,16 @@ public class HeroMovement : MonoBehaviour {
     public AudioClip engineSound;
     private AudioSource source;
 
+    public Slider slider;
+    private float sliderValue;
+
     private void FixedUpdate()
     {
+        sliderValue = slider.value;
+        Vector3 temp = transform.position;
+        temp.x = sliderValue;
+        transform.localPosition = temp;
+
         if (hero.velocity.x < heroMaxSpeed)
         {
 			float h = CnInputManager.GetAxis("Horizontal");
