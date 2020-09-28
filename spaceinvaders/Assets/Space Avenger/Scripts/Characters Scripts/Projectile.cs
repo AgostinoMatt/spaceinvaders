@@ -23,6 +23,7 @@ public class Projectile : MonoBehaviour {
     {
         gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * projectileSpeed, ForceMode2D.Impulse);
         Destroy(gameObject,20);
+        transform.parent = null;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
